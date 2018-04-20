@@ -42,8 +42,7 @@
         android:id="@+id/in_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/mm_dd_yyyy"
-        />
+        android:hint="@string/mm_dd_yyyy" />
     <TextView
         android:id="@+id/ageTextView"
         android:text="@string/your_age_is"
@@ -66,10 +65,4 @@
         android:text="@string/submit"
         android:textStyle="bold"
         android:onClick="onSubmit"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/rome"
-        android:contentDescription="@string/rome_desc"
-        android:padding="@dimen/img_dimens"/>
 </LinearLayout>
