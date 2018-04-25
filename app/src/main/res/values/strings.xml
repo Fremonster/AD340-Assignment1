@@ -1,20 +1,23 @@
 <resources>
     <string name="app_name">Rome</string>
-    <string name="my_name">Shaffer, Melanie 4/14/18</string>
+    <string name="my_name">Shaffer, Melanie 4/23/18</string>
     <string name="goodbye">Goodbye!</string>
     <string name="arrivederci">Arrivederci!</string>
     <string name="rome_desc">Roman Forum</string>
     <string name="submit">SUBMIT</string>
-    <string name="enter_name">Enter Your Name</string>
-    <string name="enter_email">Enter Your Email Address</string>
-    <string name="enter_username">Enter A Username</string>
-    <string name="enter_age">Enter Your Age</string>
-    <string name="mm_dd_yyyy">Date of Birth: MM/DD/YYYY</string>
-    <string name="select_date">SELECT DATE</string>
+    <string name="enter_name">Your Name</string>
+    <string name="enter_email">Your Email Address</string>
+    <string name="enter_username">Choose A Username</string>
+    <string name="your_occupation">Your Occupation</string>
+    <string name="brief_description">Write a Brief Description of Yourself</string>
+    <string name="enter_age">Your Age</string>
+    <string name="mm_dd_yyyy">Your Date of Birth: MM/DD/YYYY</string>
+    <string name="select_date">SELECT DATE OF BIRTH</string>
     <string name="age_restriction">Must be 18 or older to register.</string>
     <string name="age_integer">Please enter a valid number for your age.</string>
     <string name="return_to_signup">Return to Sign Up Page</string>
     <string name="thanks">Thanks for Signing Up\n</string>
     <string name="your_age_is">Your age is:</string>
     <string name="confirm_over_18">Click here to Confirm over 18</string>
+    <string name="profile_image">Profile image</string>
 </resources>

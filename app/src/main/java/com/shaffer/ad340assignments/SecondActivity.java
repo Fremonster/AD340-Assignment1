@@ -17,14 +17,33 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         textView = findViewById(R.id.textView);
-        StringBuilder msg = new StringBuilder(getString(R.string.thanks));
+        StringBuilder msg = new StringBuilder("Your profile:\n");
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         assert b != null;
-        if (b.containsKey("username")) {
-            String username = b.getString("username");
-            msg.append(username);
-            msg.append("!");
+        if (b.containsKey("name")) {
+            String name = b.getString("name");
+            msg.append("Name: ");
+            msg.append(name);
+            msg.append("\n");
+        }
+        if (b.containsKey("age")) {
+            String age = b.getString("age");
+            msg.append("Age: ");
+            msg.append(age);
+            msg.append("\n");
+        }
+        if (b.containsKey("occupation")) {
+            String occupation = b.getString("occupation");
+            msg.append("Occupation: ");
+            msg.append(occupation);
+            msg.append("\n");
+        }
+        if (b.containsKey("description")) {
+            String description = b.getString("description");
+            msg.append("Description: ");
+            msg.append(description);
+            msg.append("\n");
         }
         textView.setText(msg);
         Log.i(TAG, "onCreate()");

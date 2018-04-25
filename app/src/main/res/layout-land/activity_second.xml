@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/relativeLayout"
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/clayColor"
-    tools:context=".SecondActivity"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:textColor="#8e8c8c"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:textStyle="bold"/>
-    <Button
-        android:id="@+id/return_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView"
-        android:text="@string/return_to_signup"
-        android:onClick="goToMain"/>
-</RelativeLayout>
+        android:background="@color/clayColor"
+        tools:context=".SecondActivity"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#8e8c8c"
+            android:textSize="@dimen/profile_text_dimens"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/hello_dimens"
+            android:textStyle="bold"/>
+        <ImageView
+            android:id="@+id/profilePic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/benedict"
+            android:contentDescription="@string/profile_image"
+            android:layout_below="@id/textView"
+            android:layout_centerHorizontal="true"
+            />
+        <Button
+            android:id="@+id/return_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/profilePic"
+            android:text="@string/return_to_signup"
+            android:onClick="goToMain"/>
+    </RelativeLayout>
+</ScrollView>

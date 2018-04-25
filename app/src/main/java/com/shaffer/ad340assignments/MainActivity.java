@@ -20,7 +20,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 /**
- * MainActivity class for Assignment 2
+ * MainActivity class for Assignment 3
  * @author Melanie Shaffer
  */
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText editTextDOB;
     private TextView textViewAge;
     private LocalDate dateOfBirth;
+    private EditText editTextOccupation;
+    private EditText editTextDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         editTextName = findViewById(R.id.nameEditText);
         editTextEmail = findViewById(R.id.emailEditText);
         editTextUsername = findViewById(R.id.usernameEditText);
+        editTextOccupation = findViewById(R.id.occupationEditText);
+        editTextDescription = findViewById(R.id.descriptionEditText);
         textViewAge = findViewById(R.id.ageTextView);
         editTextDOB = findViewById(R.id.in_date);
         btnDatePicker = findViewById(R.id.date_btn);
@@ -71,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
     public void onSubmit(View view) {
         if (validate()) {
             Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            intent.putExtra("username", editTextUsername.getText().toString());
+            intent.putExtra("name", editTextName.getText().toString());
+            intent.putExtra("age", textViewAge.getText().toString());
+            intent.putExtra("occupation", editTextOccupation.getText().toString());
+            intent.putExtra("description", editTextDescription.getText().toString());
             startActivity(intent);
         }
     }
@@ -81,9 +88,11 @@ public class MainActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
         String email = editTextEmail.getText().toString();
         String username = editTextUsername.getText().toString();
+        String occupation = editTextOccupation.getText().toString();
+        String description = editTextDescription.getText().toString();
         String dob = editTextDOB.getText().toString();
         if (Util.isEmpty(name)) {
-            editTextName.setError("Please enter a valid name");
+            editTextName.setError("Please enter your name");
             valid = false;
         }
         if (!Util.isValidEmail(email)) {
@@ -92,6 +101,14 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!Util.isValidUsername(username)) {
             editTextUsername.setError("Please enter a username at least 5 characters long");
+            valid = false;
+        }
+        if (Util.isEmpty(occupation)) {
+            editTextOccupation.setError("Please enter your occupation");
+            valid = false;
+        }
+        if (Util.isEmpty(description)) {
+            editTextDescription.setError("Please enter a description");
             valid = false;
         }
         if (!Util.isDateValid(dob)) {
@@ -120,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         LocalDate today = LocalDate.now();
         Period period = Period.between(dateOfBirth, today);
         int calculatedAge = period.getYears();
+        textViewAge.setText(String.valueOf(calculatedAge));
         if (calculatedAge < 18) {
             return false;
         } else {
@@ -153,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     // If DatePicker is used to set date
-    public void setTime(View view) {
+    public void setDate(View view) {
         if (view == btnDatePicker) {
             // get current date
             final Calendar cal = Calendar.getInstance();
@@ -199,8 +217,8 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState.containsKey("textView")) {
             textView.setText((String)savedInstanceState.get("textView"));
         }
-        if (savedInstanceState.containsKey("age")) {
-            textViewAge.setText((String)savedInstanceState.get("age"));
+        if (savedInstanceState.containsKey("textAge")) {
+            textViewAge.setText((String)savedInstanceState.get("textAge"));
         }
         Log.i(TAG, "onRestoreInstanceState()");
     }
@@ -209,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString("textView", textView.getText().toString());
-        outState.putString("age", textViewAge.getText().toString());
+        outState.putString("textAge", textViewAge.getText().toString());
         Log.i(TAG, "onSaveInstanceState()");
     }
 
