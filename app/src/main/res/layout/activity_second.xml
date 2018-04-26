@@ -31,6 +31,7 @@
             android:contentDescription="@string/profile_image"
             android:layout_below="@id/textView"
             android:layout_centerHorizontal="true"
+            android:layout_marginBottom="@dimen/hello_dimens"
             />
         <Button
             android:id="@+id/return_btn"

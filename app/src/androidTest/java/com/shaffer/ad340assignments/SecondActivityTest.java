@@ -29,7 +29,7 @@ public class SecondActivityTest {
 
     @Test
     public void setsRightMessageBasedOnIntentExtra() {
-        StringBuilder msg = new StringBuilder("Your profile:\n");
+        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         msg.append("Name: ");
         msg.append("Benedict Cumberbatch");
         msg.append("\n");
@@ -49,7 +49,7 @@ public class SecondActivityTest {
 
     @Test
     public void messageUnchangedAfterRotate() {
-        StringBuilder msg = new StringBuilder("Your profile:\n");
+        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         msg.append("Name: ");
         msg.append("Benedict Cumberbatch");
         msg.append("\n");

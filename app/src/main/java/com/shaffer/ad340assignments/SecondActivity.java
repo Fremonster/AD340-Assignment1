@@ -17,7 +17,7 @@ public class SecondActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
         textView = findViewById(R.id.textView);
-        StringBuilder msg = new StringBuilder("Your profile:\n");
+        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         assert b != null;

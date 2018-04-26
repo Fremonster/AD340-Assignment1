@@ -26,7 +26,7 @@ import static android.support.test.espresso.intent.Intents.intended;
 
 /**
  * MainActivity test for Assignment 3
- * Several of these tests only work in Portrait Orientation
+ * Several of these tests only work in Portrait Screen Orientation
  */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
@@ -124,6 +124,7 @@ public class MainActivityTest {
         onView(withId(R.id.emailEditText)).check(matches(hasErrorText("Please enter a valid email address")));
     }
 
+    // should get error message in the date fields when someone under 18 attempts to register
     @Test
     public void testUnderEighteen() {
         onView(withId(R.id.nameEditText)).perform(typeText("Peter Parker"), closeSoftKeyboard());
@@ -144,6 +145,7 @@ public class MainActivityTest {
         onView(withId(R.id.in_date)).check(matches(hasErrorText("Please enter a valid date in the MM/DD/YYYY format")));
     }
 
+    // checks that TextView showing calculated age is displayed after rotate
     @Test
     public void ageTextViewWithRotate() {
         onView(withId(R.id.nameEditText)).perform(typeText("Benedict Cumberbatch"), closeSoftKeyboard());
@@ -167,7 +169,7 @@ public class MainActivityTest {
         onView(withId(R.id.in_date)).check(matches(withText("07/19/1976")));
     }
 
-
+    // Test the TextView message when someone under 18 hits the Confirm Over 18 button
     @Test
     public void testTextViewUnderEighteen() {
         onView(withId(R.id.nameEditText)).perform(typeText("Peter Parker"), closeSoftKeyboard());
@@ -180,7 +182,5 @@ public class MainActivityTest {
         onView(withId(R.id.confirm_age)).perform(scrollTo(), click());
         onView(withId(R.id.ageTextView)).check(matches(withText("Your age is 17. You must be at least 18 to register.")));
     }
-
-
 
 }
