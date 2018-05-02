@@ -1,15 +1,21 @@
 package com.shaffer.ad340assignments;
 
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.test.rule.ActivityTestRule;
+import android.view.View;
 
+import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.isDescendantOfA;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static android.support.test.espresso.action.ViewActions.click;
+import static org.hamcrest.core.AllOf.allOf;
 
 public class SecondActivityTest {
 
@@ -28,7 +34,41 @@ public class SecondActivityTest {
     };
 
     @Test
-    public void setsRightMessageBasedOnIntentExtra() {
+    public void testProfileTab() {
+        Matcher<View> matcher = allOf(withText("Profile"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher).perform(click());
+        SystemClock.sleep(800);
+        String profile =  getProfile();
+        onView(withId(R.id.textView))
+                .check(matches(withText(profile)));
+    }
+
+    @Test
+    public void testMatchesTab() {
+        Matcher<View> matcher = allOf(withText("Matches"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher).perform(click());
+        SystemClock.sleep(800);
+        String text = "Matches go here";
+        onView(withId(R.id.matchesTextView))
+                .check(matches(withText(text)));
+    }
+
+
+    @Test
+    public void testSettingsTab() {
+        Matcher<View> matcher = allOf(withText("Settings"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher).perform(click());
+        SystemClock.sleep(800);
+        String text =  "Settings go here";
+        onView(withId(R.id.settingsTextView))
+                .check(matches(withText(text)));
+    }
+
+
+    private String getProfile() {
         StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         msg.append("Name: ");
         msg.append("Benedict Cumberbatch");
@@ -42,31 +82,20 @@ public class SecondActivityTest {
         msg.append("Description: ");
         msg.append("I like long walks on the beach and holding hands. I am looking for someone who loves bunnies and chocolate. I enjoy underwater basket weaving.");
         msg.append("\n");
-        String message = msg.toString();
-        onView(withId(R.id.textView))
-                .check(matches(withText(message)));
+        return msg.toString();
     }
 
     @Test
     public void messageUnchangedAfterRotate() {
-        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
-        msg.append("Name: ");
-        msg.append("Benedict Cumberbatch");
-        msg.append("\n");
-        msg.append("Age: ");
-        msg.append("41");
-        msg.append("\n");
-        msg.append("Occupation: ");
-        msg.append("Actor");
-        msg.append("\n");
-        msg.append("Description: ");
-        msg.append("I like long walks on the beach and holding hands. I am looking for someone who loves bunnies and chocolate. I enjoy underwater basket weaving.");
-        msg.append("\n");
-        String message = msg.toString();
+        Matcher<View> matcher = allOf(withText("Profile"),
+                isDescendantOfA(withId(R.id.tabs)));
+        onView(matcher).perform(click());
+        SystemClock.sleep(800);
+        String profile =  getProfile();
         onView(withId(R.id.textView))
-                .check(matches(withText(message)));
+                .check(matches(withText(profile)));
         TestUtils.rotateScreen(activityTestRule.getActivity());
         onView(withId(R.id.textView))
-                .check(matches(withText(message)));
+                .check(matches(withText(profile)));
     }
 }

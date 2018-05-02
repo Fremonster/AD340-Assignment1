@@ -9,7 +9,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.openActionBarOverflowOrOptionsMenu;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -25,7 +24,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 
 /**
- * MainActivity test for Assignment 3
+ * MainActivity test for Assignment 4
  * Several of these tests only work in Portrait Screen Orientation
  */
 @RunWith(AndroidJUnit4.class)

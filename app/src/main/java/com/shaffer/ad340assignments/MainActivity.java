@@ -3,6 +3,7 @@ package com.shaffer.ad340assignments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +21,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 /**
- * MainActivity class for Assignment 3
+ * MainActivity class for Assignment 4
  * @author Melanie Shaffer
  */
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         textViewAge = findViewById(R.id.ageTextView);
         editTextDOB = findViewById(R.id.in_date);
         btnDatePicker = findViewById(R.id.date_btn);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         findViewById(R.id.confirm_age);
         findViewById(R.id.submit_btn);
         Log.i(TAG, "onCreate()");
@@ -58,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.activity_main, menu);
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 

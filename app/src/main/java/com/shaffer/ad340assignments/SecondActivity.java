@@ -2,51 +2,139 @@ package com.shaffer.ad340assignments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SecondActivity extends AppCompatActivity {
 
     private static final String TAG = SecondActivity.class.getSimpleName();
-    TextView textView;
+    private String name;
+    private String age;
+    private String occupation;
+    private String description;
+    private String profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_second);
-        textView = findViewById(R.id.textView);
-        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         Intent intent = getIntent();
         Bundle b = intent.getExtras();
         assert b != null;
         if (b.containsKey("name")) {
-            String name = b.getString("name");
-            msg.append("Name: ");
-            msg.append(name);
-            msg.append("\n");
+            name = b.getString("name");
         }
         if (b.containsKey("age")) {
-            String age = b.getString("age");
-            msg.append("Age: ");
-            msg.append(age);
-            msg.append("\n");
+            age = b.getString("age");
         }
         if (b.containsKey("occupation")) {
-            String occupation = b.getString("occupation");
-            msg.append("Occupation: ");
-            msg.append(occupation);
-            msg.append("\n");
+            occupation = b.getString("occupation");
         }
         if (b.containsKey("description")) {
-            String description = b.getString("description");
-            msg.append("Description: ");
-            msg.append(description);
-            msg.append("\n");
+            description = b.getString("description");
         }
-        textView.setText(msg);
+        setProfile();
+        setContentView(R.layout.activity_second);
+        // Adding Toolbar to Main screen
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Setting ViewPager for each Tabs
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+        // Set Tabs inside Toolbar
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
         Log.i(TAG, "onCreate()");
+    }
+
+    public void setProfile() {
+        StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
+        msg.append("Name: ");
+        msg.append(name);
+        msg.append("\n");
+        msg.append("Age: ");
+        msg.append(age);
+        msg.append("\n");
+        msg.append("Occupation: ");
+        msg.append(occupation);
+        msg.append("\n");
+        msg.append("Description: ");
+        msg.append(description);
+        msg.append("\n");
+        profile = msg.toString();
+    }
+
+    public String getProfile() {
+        if (profile != null) {
+            return profile;
+        } else {
+            return "This isn't working";
+        }
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey("profile")) {
+            profile = savedInstanceState.getString("profile");
+        }
+        Log.i(TAG, "onRestoreInstanceState()");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("profile", profile);
+        Log.i(TAG, "onSaveInstanceState()");
+    }
+
+    // Add Fragments to Tabs
+    private void setupViewPager(ViewPager viewPager) {
+        Adapter adapter = new Adapter(getSupportFragmentManager());
+        adapter.addFragment(new ProfileContentFragment(), "Profile");
+        adapter.addFragment(new MatchesContentFragment(), "Matches");
+        adapter.addFragment(new SettingsContentFragment(), "Settings");
+        viewPager.setAdapter(adapter);
+    }
+
+    static class Adapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public Adapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
     }
 
     public void goToMain(View view) {
