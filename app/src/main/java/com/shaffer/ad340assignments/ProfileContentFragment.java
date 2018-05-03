@@ -17,6 +17,7 @@ public class ProfileContentFragment extends Fragment {
     private static String TAG = ProfileContentFragment.class.getSimpleName();
 
     private TextView textView;
+    private String profile;
 
     @Override
     public void onAttach(Context context) {
@@ -24,9 +25,11 @@ public class ProfileContentFragment extends Fragment {
         Log.i(TAG, "onAttach()");
     }
 
+    // Get arguments bundle containing profile string
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        profile = getArguments().getString("profile");
         Log.i(TAG, "onCreate()");
     }
 
@@ -36,14 +39,10 @@ public class ProfileContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView =  inflater.inflate(R.layout.item_profile, container, false);
         textView = rootView.findViewById(R.id.textView);
+        textView.setText(profile);
         if(savedInstanceState != null) {
             textView.setText(savedInstanceState.getString("textView"));
-        } else {
-            SecondActivity activity = (SecondActivity) getActivity();
-            String profile = activity.getProfile();
-            textView.setText(profile);
         }
-        //setRetainInstance(true);
         return rootView;
     }
 

@@ -46,7 +46,7 @@ public class SecondActivity extends AppCompatActivity {
         }
         setProfile();
         setContentView(R.layout.activity_second);
-        // Adding Toolbar to Main screen
+        // Adding Toolbar to screen
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Setting ViewPager for each Tabs
@@ -58,7 +58,8 @@ public class SecondActivity extends AppCompatActivity {
         Log.i(TAG, "onCreate()");
     }
 
-    public void setProfile() {
+    // Sets the profile string
+    private void setProfile() {
         StringBuilder msg = new StringBuilder("YOUR PROFILE\n");
         msg.append("Name: ");
         msg.append(name);
@@ -75,6 +76,7 @@ public class SecondActivity extends AppCompatActivity {
         profile = msg.toString();
     }
 
+    // Gets the profile string
     public String getProfile() {
         if (profile != null) {
             return profile;
@@ -101,10 +103,19 @@ public class SecondActivity extends AppCompatActivity {
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
+        // create fragments
+        ProfileContentFragment profileContentFragment = new ProfileContentFragment();
+        MatchesContentFragment matchesContentFragment = new MatchesContentFragment();
+        SettingsContentFragment settingsContentFragment = new SettingsContentFragment();
+        // add profile data to profileContentFragment
+        Bundle bundle = new Bundle();
+        bundle.putString("profile", getProfile());
+        profileContentFragment.setArguments(bundle);
+        // add fragments to adapter and set tab names
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ProfileContentFragment(), "Profile");
-        adapter.addFragment(new MatchesContentFragment(), "Matches");
-        adapter.addFragment(new SettingsContentFragment(), "Settings");
+        adapter.addFragment(profileContentFragment, "Profile");
+        adapter.addFragment(matchesContentFragment, "Matches");
+        adapter.addFragment(settingsContentFragment, "Settings");
         viewPager.setAdapter(adapter);
     }
 
@@ -112,7 +123,7 @@ public class SecondActivity extends AppCompatActivity {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 
-        public Adapter(FragmentManager manager) {
+        private Adapter(FragmentManager manager) {
             super(manager);
         }
 
@@ -126,7 +137,7 @@ public class SecondActivity extends AppCompatActivity {
             return mFragmentList.size();
         }
 
-        public void addFragment(Fragment fragment, String title) {
+        private void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
