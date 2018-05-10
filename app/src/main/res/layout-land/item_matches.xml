@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/card_height"
@@ -17,6 +16,7 @@
 
         <ImageView
             android:id="@+id/card_image"
+            android:contentDescription="@string/card_image"
             android:layout_width="match_parent"
             android:layout_height="@dimen/card_image_height"
             android:scaleType="centerCrop" />
@@ -54,8 +54,7 @@
             android:layout_below="@+id/card_text"
             android:layout_alignParentEnd="true"
             style="?android:attr/borderlessButtonStyle"
-            android:tint="@color/grey"
-            android:onClick="toast"/>
+            android:tint="@color/grey" />
 
     </RelativeLayout>
 </android.support.v7.widget.CardView>

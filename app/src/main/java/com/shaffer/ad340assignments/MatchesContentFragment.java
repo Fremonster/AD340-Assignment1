@@ -1,6 +1,5 @@
 package com.shaffer.ad340assignments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -14,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 public class MatchesContentFragment extends Fragment {
 
     private static String TAG = MatchesContentFragment.class.getSimpleName();
-    ContentAdapter adapter;
 
     @Override
     public void onAttach(Context context) {
@@ -46,7 +43,7 @@ public class MatchesContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         RecyclerView recyclerView = (RecyclerView) inflater.inflate(
                 R.layout.recycler_view, container, false);
-        adapter = new ContentAdapter(recyclerView.getContext());
+        ContentAdapter adapter = new ContentAdapter(recyclerView.getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -95,7 +92,6 @@ public class MatchesContentFragment extends Fragment {
             a.recycle();
         }
 
-
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             return new ViewHolder(LayoutInflater.from(parent.getContext()), parent);
@@ -113,6 +109,7 @@ public class MatchesContentFragment extends Fragment {
                     Toast.makeText(context, "You liked " +  currName, Toast.LENGTH_LONG).show();
                 }
             });
+            Log.i(TAG, "onBindViewHolder()");
         }
 
         @Override

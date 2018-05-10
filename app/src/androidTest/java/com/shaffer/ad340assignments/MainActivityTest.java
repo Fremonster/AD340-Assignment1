@@ -24,8 +24,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 
 /**
- * MainActivity test for Assignment 4
- * Several of these tests only work in Portrait Screen Orientation
+ * MainActivity test for Assignment 5
  */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {

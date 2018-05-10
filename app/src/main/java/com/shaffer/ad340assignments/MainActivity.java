@@ -21,7 +21,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Calendar;
 
 /**
- * MainActivity class for Assignment 4
+ * MainActivity class for Assignment 5
  * @author Melanie Shaffer
  */
 public class MainActivity extends AppCompatActivity {
