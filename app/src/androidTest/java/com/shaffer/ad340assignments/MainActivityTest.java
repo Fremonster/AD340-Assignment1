@@ -131,7 +131,7 @@ public class MainActivityTest {
         onView(withId(R.id.usernameEditText)).perform(typeText("spidey"), closeSoftKeyboard());
         onView(withId(R.id.occupationEditText)).perform(typeText("Superhero"), closeSoftKeyboard());
         onView(withId(R.id.descriptionEditText)).perform(typeText("Looking for someone who will be understanding when I flake out on a date to fight crime. Must love science."), closeSoftKeyboard());
-        onView(withId(R.id.in_date)).perform(typeText("05/10/2000"), closeSoftKeyboard());
+        onView(withId(R.id.in_date)).perform(typeText("07/10/2000"), closeSoftKeyboard());
         onView(withId(R.id.submit_btn)).perform(scrollTo(), click());
         onView(withId(R.id.in_date)).check(matches(hasErrorText("Must be 18 or older to register.")));
     }
@@ -176,7 +176,7 @@ public class MainActivityTest {
         onView(withId(R.id.usernameEditText)).perform(typeText("spidey"), closeSoftKeyboard());
         onView(withId(R.id.occupationEditText)).perform(typeText("Superhero"), closeSoftKeyboard());
         onView(withId(R.id.descriptionEditText)).perform(typeText("Looking for someone who will be understanding when I flake out on a date to fight crime. Must love science."), closeSoftKeyboard());
-        onView(withId(R.id.in_date)).perform(typeText("05/10/2000"), closeSoftKeyboard());
+        onView(withId(R.id.in_date)).perform(typeText("07/10/2000"), closeSoftKeyboard());
         onView(withId(R.id.ageTextView)).check(matches(withText(R.string.your_age_is)));
         onView(withId(R.id.confirm_age)).perform(scrollTo(), click());
         onView(withId(R.id.ageTextView)).check(matches(withText("Your age is 17. You must be at least 18 to register.")));

@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#186ccc</color>
     <color name="colorAccent">#ca6c25</color>
     <color name="clayColor">#FFCAA0</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+    <color name="grey">#666</color>
 </resources>
