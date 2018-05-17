@@ -3,21 +3,20 @@ package com.shaffer.ad340assignments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.shaffer.ad340assignments.models.MatchItem;
+import com.shaffer.ad340assignments.viewmodels.MatchesViewModel;
 
-public class SecondActivity extends AppCompatActivity {
+public class SecondActivity extends AppCompatActivity implements MatchesContentFragment.OnListFragmentInteractionListener {
 
     private static final String TAG = SecondActivity.class.getSimpleName();
+    private MatchesViewModel viewModel;
+    private Adapter adapter;
     private String name;
     private String age;
     private String occupation;
@@ -44,6 +43,10 @@ public class SecondActivity extends AppCompatActivity {
         }
         setProfile();
         setContentView(R.layout.activity_second);
+        // create the view model
+        viewModel = new MatchesViewModel();
+        // get fragment manager from adapter
+        adapter = new Adapter(getSupportFragmentManager());
         // Adding Toolbar to screen
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,6 +57,23 @@ public class SecondActivity extends AppCompatActivity {
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
         Log.i(TAG, "onCreate()");
+    }
+
+    @Override
+    public void onListFragmentInteraction(MatchItem item) {
+        if (!item.liked) {
+            item.liked = true;
+        } else {
+            item.liked = false;
+        }
+        viewModel.updateMatchItem(item);
+    }
+
+    @Override
+    protected void onPause() {
+        viewModel.clear();
+        super.onPause();
+        Log.i(TAG, "onPause()");
     }
 
     // Sets the profile string
@@ -110,40 +130,11 @@ public class SecondActivity extends AppCompatActivity {
         bundle.putString("profile", getProfile());
         profileContentFragment.setArguments(bundle);
         // add fragments to adapter and set tab names
-        Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(profileContentFragment, "Profile");
+        adapter.addFragment(profileContentFragment, "Profile"); // could addFragment with bundle here adapter.addFragment(new ProfileTabFragment(), "Profile", getIntent().getExtras());
         adapter.addFragment(matchesContentFragment, "Matches");
         adapter.addFragment(settingsContentFragment, "Settings");
         viewPager.setAdapter(adapter);
-    }
-
-    static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        private Adapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        private void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+        Log.i(TAG, "setupViewPager()");
     }
 
     public void goToMain(View view) {
@@ -153,8 +144,11 @@ public class SecondActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(SecondActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -173,12 +167,6 @@ public class SecondActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Log.i(TAG, "onResume()");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.i(TAG, "onPause()");
     }
 
     @Override
