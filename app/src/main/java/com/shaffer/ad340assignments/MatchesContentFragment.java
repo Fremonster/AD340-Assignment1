@@ -24,11 +24,9 @@ import java.util.List;
  */
 public class MatchesContentFragment extends Fragment {
 
-    // TODO: Customize parameter argument names
     public static final String ARG_COLUMN_COUNT = "column-count";
     public static final String ARG_DATA_SET = "matches";
 
-    // TODO: Customize parameters
     private int mColumnCount = 6;
     private List<MatchItem> mDataSet;
     private OnListFragmentInteractionListener mListener;
@@ -43,8 +41,7 @@ public class MatchesContentFragment extends Fragment {
      */
     public MatchesContentFragment() {
     }
-
-    // TODO: Customize parameter initialization
+    
     @SuppressWarnings("unused")
     public static MatchesContentFragment newInstance(int columnCount) {
         MatchesContentFragment fragment = new MatchesContentFragment();
