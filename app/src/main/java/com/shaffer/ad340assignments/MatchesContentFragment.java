@@ -41,7 +41,7 @@ public class MatchesContentFragment extends Fragment {
      */
     public MatchesContentFragment() {
     }
-    
+
     @SuppressWarnings("unused")
     public static MatchesContentFragment newInstance(int columnCount) {
         MatchesContentFragment fragment = new MatchesContentFragment();
@@ -109,7 +109,6 @@ public class MatchesContentFragment extends Fragment {
      * activity.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onListFragmentInteraction(MatchItem item);
     }
 

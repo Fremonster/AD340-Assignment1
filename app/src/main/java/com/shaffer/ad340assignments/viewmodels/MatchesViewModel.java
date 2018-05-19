@@ -15,7 +15,8 @@ public class MatchesViewModel {
         matchesModel = new MatchesModel();
     }
 
-    public void addmatchItem(MatchItem item) {
+    // could be used to add new match items to the database
+    public void addMatchItem(MatchItem item) {
         matchesModel.addMatchItem(item);
     }
 

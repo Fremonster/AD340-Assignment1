@@ -15,8 +15,7 @@ public class MatchItem  implements Parcelable {
     public String imageUrl;
     public boolean liked;
     public String name;
-
-
+    
     public MatchItem() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
