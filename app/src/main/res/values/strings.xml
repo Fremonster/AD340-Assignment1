@@ -22,4 +22,15 @@
     <string name="profile_image">Profile image</string>
     <string name="like_button_image">Like button image</string>
     <string name="card_image">Card image</string>
+    <string name="max_distance_away_in_miles">Max distance away (in miles):</string>
+    <string name="daily_match_reminder_time">Daily match reminder time:</string>
+    <string name="your_settings">YOUR SETTINGS</string>
+    <string name="enter_distance_from_location">Enter the max distance from your location</string>
+    <string name="gender">Gender</string>
+    <string name="public_profile">public profile</string>
+    <string name="private_profile">private profile</string>
+    <string name="age_range">Age Range:</string>
+    <string name="minumum_age">Minumum Age</string>
+    <string name="maximum_age">Maximum Age</string>
+    <string name="save_settings">Save Settings</string>
 </resources>

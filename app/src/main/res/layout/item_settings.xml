@@ -16,7 +16,7 @@
             android:id="@+id/settingsTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="YOUR SETTINGS"
+            android:text="@string/your_settings"
             android:textColor="#8e8c8c"
             android:textSize="@dimen/profile_text_dimens"
             android:textStyle="bold" />
@@ -24,7 +24,7 @@
             android:id="@+id/dailyMatchTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Daily match reminder time:"/>
+            android:text="@string/daily_match_reminder_time"/>
 
         <TimePicker
             android:id="@+id/timePicker"
@@ -36,19 +36,19 @@
             android:id="@+id/distanceFromUserTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Max distance away (in miles):" />
+            android:text="@string/max_distance_away_in_miles" />
 
         <EditText
             android:id="@+id/maxDistanceEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter the max distance from your location" />
+            android:hint="@string/enter_distance_from_location" />
 
         <EditText
             android:id="@+id/genderEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gender" />
+            android:hint="@string/gender" />
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/radio_group"
@@ -61,39 +61,39 @@
                 android:id="@+id/radio_public"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="public profile" />
+                android:text="@string/public_profile" />
 
             <RadioButton
                 android:id="@+id/radio_private"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="private profile" />
+                android:text="@string/private_profile" />
         </RadioGroup>
 
         <TextView
             android:id="@+id/ageRangeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Age Range:" />
+            android:text="@string/age_range" />
 
         <EditText
             android:id="@+id/minAgeEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Minumum Age" />
+            android:hint="@string/minumum_age" />
 
         <EditText
             android:id="@+id/maxAgeEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Maximum Age" />
+            android:hint="@string/maximum_age" />
 
         <Button
             android:id="@+id/settings_btn"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save Settings"
+            android:text="@string/save_settings"
             android:textStyle="bold"
             android:layout_marginBottom="30dp"/>
 
