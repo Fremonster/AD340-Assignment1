@@ -90,16 +90,16 @@ public class SecondActivityTest {
 
 
 
-    @Test
-    public void testSettingsTab() {
-        Matcher<View> matcher = allOf(withText("Settings"),
-                isDescendantOfA(withId(R.id.tabs)));
-        onView(matcher).perform(click());
-        SystemClock.sleep(800);
-        String text =  "Settings go here";
-        onView(withId(R.id.settingsTextView))
-                .check(matches(withText(text)));
-    }
+//    @Test
+//    public void testSettingsTab() {
+//        Matcher<View> matcher = allOf(withText("Settings"),
+//                isDescendantOfA(withId(R.id.tabs)));
+//        onView(matcher).perform(click());
+//        SystemClock.sleep(800);
+//        String text =  "Settings go here";
+//        onView(withId(R.id.settingsTextView))
+//                .check(matches(withText(text)));
+//    }
 
 
     private String getProfile() {
