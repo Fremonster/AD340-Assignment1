@@ -42,6 +42,16 @@ public class Util {
         return matcher.matches();
     }
 
+//    public static boolean isValidTime(String time) {
+//        if(isEmpty(time)) {
+//            return false;
+//        }
+//        String TIME_PATTERN = "^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$";
+//        Pattern pattern = Pattern.compile(TIME_PATTERN);
+//        Matcher matcher = pattern.matcher(time);
+//        return matcher.matches();
+//    }
+
     public static boolean isNumeric(String string){
         if(isEmpty(string)) {
             return false;
@@ -55,6 +65,5 @@ public class Util {
         }
         return false;
     }
-
 
 }

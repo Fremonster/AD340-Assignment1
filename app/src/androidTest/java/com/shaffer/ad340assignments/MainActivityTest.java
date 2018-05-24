@@ -24,7 +24,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static android.support.test.espresso.intent.Intents.intended;
 
 /**
- * MainActivity test for Assignment 5
+ * MainActivity test for Assignment 7
  */
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {

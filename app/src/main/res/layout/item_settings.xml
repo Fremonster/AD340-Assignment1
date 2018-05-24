@@ -1,12 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp">
-    <TextView
-        android:id="@+id/settingsTextView"
-        android:layout_width="wrap_content"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings go here" />
-</LinearLayout>
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".SettingsContentFragment">
+
+        <TextView
+            android:id="@+id/settingsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="YOUR SETTINGS"
+            android:textColor="#8e8c8c"
+            android:textSize="@dimen/profile_text_dimens"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/dailyMatchTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily match reminder time:"/>
+
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner" />
+
+        <TextView
+            android:id="@+id/distanceFromUserTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Max distance away (in miles):" />
+
+        <EditText
+            android:id="@+id/maxDistanceEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter the max distance from your location" />
+
+        <EditText
+            android:id="@+id/genderEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Gender" />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_public"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="public profile" />
+
+            <RadioButton
+                android:id="@+id/radio_private"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="private profile" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/ageRangeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Age Range:" />
+
+        <EditText
+            android:id="@+id/minAgeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Minumum Age" />
+
+        <EditText
+            android:id="@+id/maxAgeEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Maximum Age" />
+
+        <Button
+            android:id="@+id/settings_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Settings"
+            android:textStyle="bold"
+            android:layout_marginBottom="30dp"/>
+
+    </LinearLayout>
+</ScrollView>
