@@ -83,6 +83,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
@@ -104,6 +105,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("Twenty"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
@@ -118,6 +120,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("Thirty"), closeSoftKeyboard());
@@ -132,6 +135,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("16"), closeSoftKeyboard());
@@ -146,6 +150,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());

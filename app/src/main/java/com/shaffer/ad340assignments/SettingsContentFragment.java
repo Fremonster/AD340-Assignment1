@@ -224,13 +224,17 @@ public class SettingsContentFragment extends Fragment {
         @Override
         protected void onPostExecute(Settings settings) {
             this.fragment = weakFragment.get();
-            if(settings == null || fragment == null) {
+            if (settings == null || fragment == null) {
                 return;
             }
             String time = settings.getDailyMatchReminderTime();
             String[] hourAndMins = time.split(":");
-            fragment.tp.setHour(Integer.valueOf(hourAndMins[0]));
-            fragment.tp.setMinute(Integer.valueOf(hourAndMins[1]));
+            if (hourAndMins.length >= 1 && Util.isNumeric(hourAndMins[0])) {
+                fragment.tp.setHour(Integer.valueOf(hourAndMins[0]));
+            }
+            if (hourAndMins.length >= 2 && Util.isNumeric(hourAndMins[1])) {
+                fragment.tp.setMinute(Integer.valueOf(hourAndMins[1]));
+            }
             fragment.genderEditText.setText(settings.getGender());
             boolean isPublic = settings.isPublic();
             if (isPublic) {
