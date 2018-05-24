@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.espresso.contrib.PickerActions;
 import android.widget.DatePicker;
+import android.widget.TimePicker;
 
 import org.hamcrest.Matchers;
 
@@ -42,22 +43,27 @@ public class TestUtils {
         }
     }
 
-    public static String getScreenOrientation(Activity activity) {
-        String orientation = null;
-        int currentOrientation = activity.getResources().getConfiguration().orientation;
-        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-            orientation = "Landscape";
-        }
-        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
-            orientation = "Portrait";
-        }
-        return orientation;
-    }
+//    public static String getScreenOrientation(Activity activity) {
+//        String orientation = null;
+//        int currentOrientation = activity.getResources().getConfiguration().orientation;
+//        if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
+//            orientation = "Landscape";
+//        }
+//        if (currentOrientation == Configuration.ORIENTATION_PORTRAIT) {
+//            orientation = "Portrait";
+//        }
+//        return orientation;
+//    }
 
     public static void setDate(int datePickerLaunchViewId, int year, int monthOfYear, int dayOfMonth) {
         onView(withId(datePickerLaunchViewId)).perform(scrollTo(), click());
         onView(withClassName(Matchers.equalTo(DatePicker.class.getName()))).perform(PickerActions.setDate(year, monthOfYear, dayOfMonth));
         onView(withId(android.R.id.button1)).perform(click());
+    }
+
+    public static void setTime(int timePickerLaunchViewId, int hours, int minutes) {
+        onView(withId(timePickerLaunchViewId)).perform(scrollTo(), click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName()))).perform(PickerActions.setTime(hours, minutes));
     }
 
 }

@@ -62,6 +62,7 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        TestUtils.setTime(R.id.timePicker, 12, 30);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
@@ -104,6 +105,9 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("Twenty"), closeSoftKeyboard());
+        onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
+        onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
+        onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
         onView(withId(R.id.settings_btn)).perform(scrollTo(), click());
         onView(withId(R.id.maxDistanceEditText)).check(matches(hasErrorText("Please enter a valid number")));
     }
@@ -114,7 +118,10 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
-        onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("Twenty"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
+        onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("Thirty"), closeSoftKeyboard());
+        onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
         onView(withId(R.id.settings_btn)).perform(scrollTo(), click());
         onView(withId(R.id.minAgeEditText)).check(matches(hasErrorText("Please enter a valid number")));
     }
@@ -125,7 +132,10 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("16"), closeSoftKeyboard());
+        onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
         onView(withId(R.id.settings_btn)).perform(scrollTo(), click());
         onView(withId(R.id.minAgeEditText)).check(matches(hasErrorText("The minimum age is 18")));
     }
@@ -136,7 +146,10 @@ public class SecondActivityTest {
                 isDescendantOfA(withId(R.id.tabs)));
         onView(matcher).perform(click());
         SystemClock.sleep(800);
-        onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("Twenty"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
+        onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
+        onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("Thirty-five"), closeSoftKeyboard());
         onView(withId(R.id.settings_btn)).perform(scrollTo(), click());
         onView(withId(R.id.maxAgeEditText)).check(matches(hasErrorText("Please enter a valid number")));
     }

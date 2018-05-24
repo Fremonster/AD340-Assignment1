@@ -2,18 +2,24 @@ package com.shaffer.ad340assignments;
 
 import com.shaffer.ad340assignments.entity.Settings;
 
-import org.junit.BeforeClass;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class SettingsTest {
 
-    public static Settings mySettings;
+    private Settings mySettings;
 
-    @BeforeClass
-    public static void testSetup() {
+    @Before
+    public void setUp() {
         mySettings = new Settings();
+    }
+
+    @After
+    public void teardown() {
+        mySettings = null;
     }
 
     // default min age set to 18
@@ -40,8 +46,50 @@ public class SettingsTest {
         assertEquals(false, mySettings.isPublic());
     }
 
+    @Test
+    public void testDefaultDailyReminderTime() {
+        assertEquals("00:00", mySettings.getDailyMatchReminderTime());
+    }
 
+    @Test
+    public void testSetMinAge() {
+        mySettings.setMinAge("20");
+        assertEquals("20", mySettings.getMinAge());
+    }
 
+    @Test
+    public void testSetMaxDistance() {
+        mySettings.setMaxDistance("15");
+        assertEquals("15", mySettings.getMaxDistance());
+    }
+    @Test
+    public void testSetMaxAge() {
+        mySettings.setMaxAge("30");
+        assertEquals("30", mySettings.getMaxAge());
+    }
 
+    @Test
+    public void testSetIsPublic() {
+        mySettings.setPublic(true);
+        assertEquals(true, mySettings.isPublic());
+    }
+
+    @Test
+    public void testSetDailyReminderTime() {
+        mySettings.setDailyMatchReminderTime("12:30");
+        assertEquals("12:30", mySettings.getDailyMatchReminderTime());
+    }
+
+    @Test
+    public void testSetId() {
+        mySettings.setId(1);
+        assertEquals(1, mySettings.getId());
+    }
+
+    @Test
+    public void testSetGender() {
+        mySettings.setGender("male");
+        assertEquals("male", mySettings.getGender());
+    }
 
 }
