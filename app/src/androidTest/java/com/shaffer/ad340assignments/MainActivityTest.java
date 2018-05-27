@@ -88,24 +88,6 @@ public class MainActivityTest {
         onView(withId(R.id.in_date)).check(matches(hasErrorText("Please enter a valid date in the MM/DD/YYYY format")));
     }
 
-//    @Test
-//    public void canGoToSecondActivityWithMessage() {
-//        onView(withId(R.id.nameEditText)).perform(typeText("Benedict Cumberbatch"), closeSoftKeyboard());
-//        onView(withId(R.id.emailEditText)).perform(typeText("benedict@gmail.com"), closeSoftKeyboard());
-//        onView(withId(R.id.usernameEditText)).perform(typeText("bcumberbatch"), closeSoftKeyboard());
-//        onView(withId(R.id.occupationEditText)).perform(typeText("Actor"), closeSoftKeyboard());
-//        onView(withId(R.id.descriptionEditText)).perform(typeText("I like long walks on the beach and holding hands. I am looking for someone who loves bunnies and chocolate. I enjoy underwater basket weaving."), closeSoftKeyboard());
-//        onView(withId(R.id.in_date)).perform(typeText("07/19/1976"), closeSoftKeyboard());
-//        Intents.init();
-//        onView(withId(R.id.submit_btn)).perform(click());
-//        intended(hasComponent(SecondActivity.class.getName()));
-//        intended(hasExtra("name", "Benedict Cumberbatch"));
-//        intended(hasExtra("age", "41"));
-//        intended(hasExtra("occupation", "Actor"));
-//        intended(hasExtra("description", "I like long walks on the beach and holding hands. I am looking for someone who loves bunnies and chocolate. I enjoy underwater basket weaving."));
-//        Intents.release();
-//    }
-
     // requires minimum of 5 characters
     @Test
     public void invalidUsername() {
