@@ -1,6 +1,8 @@
 package com.shaffer.ad340assignments;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
@@ -13,9 +15,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.shaffer.ad340assignments.entity.Settings;
 import com.shaffer.ad340assignments.models.MatchItem;
 import com.shaffer.ad340assignments.viewmodels.MatchesViewModel;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +40,7 @@ public class MatchesContentFragment extends Fragment {
     double latitude;
     double longitude;
     Context context;
+    double userSettingsMaxDistance;
 
     private static String TAG = MatchesContentFragment.class.getSimpleName();
 
@@ -89,6 +94,7 @@ public class MatchesContentFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = (RecyclerView) inflater.inflate(R.layout.recycler_view, container, false);
+        new GetSettingsTask(this.getActivity(), this, 1).execute(); // get max distance value from settings database
         // Instantiate view model
         MatchesViewModel viewModel = new MatchesViewModel();
         // Set the adapter
@@ -100,7 +106,7 @@ public class MatchesContentFragment extends Fragment {
                         double itemLongitude = Double.valueOf(item.longitude);
                         double itemLatitude = Double.valueOf(item.lat);
                         double milesAway = distanceFrom(itemLatitude, itemLongitude);
-                        if (milesAway > 16.0934) { //in km, equal to 10 miles
+                        if (milesAway > userSettingsMaxDistance) { //in settings, maxDistance is set to 10 miles (converted to 16.0934 km here)
                             itemsToRemove.add(item);
                         }
                     }
@@ -134,6 +140,50 @@ public class MatchesContentFragment extends Fragment {
         mListener = null;
         gps.stopUsingGPS(); // removes updates
         Log.i(TAG, "onDetach()");
+    }
+
+    private static class GetSettingsTask extends AsyncTask<Void, Void, Settings> {
+
+        private WeakReference<Activity> weakActivity;
+        private WeakReference<MatchesContentFragment> weakFragment;
+        private MatchesContentFragment fragment;
+        private int userId;
+
+        public GetSettingsTask(Activity activity, MatchesContentFragment fragment, int userId) {
+            weakActivity = new WeakReference<>(activity);
+            this.userId = userId;
+            this.weakFragment = new WeakReference<>(fragment);
+        }
+
+        @Override
+        protected Settings doInBackground(Void... voids) {
+            Activity activity = weakActivity.get();
+            if(activity == null) {
+                return null;
+            }
+
+            AppDatabase db = AppDatabaseSingleton.getDatabase(activity.getApplicationContext());
+            int[] ids = { userId };
+
+            List<Settings> settings = db.settingsDao().loadAllByIds(ids);
+
+            if(settings.size() <= 0 || settings.get(0) == null) {
+                return null;
+            }
+            return settings.get(0);
+        }
+
+        @Override
+        protected void onPostExecute(Settings settings) {
+            this.fragment = weakFragment.get();
+            if (settings == null || fragment == null) {
+                return;
+            }
+            String distance = settings.getMaxDistance();
+            if (Util.isNumeric(distance)) {
+                fragment.userSettingsMaxDistance = Double.valueOf(distance) * 1.60934; // convert to km
+            }
+        }
     }
 
     /**

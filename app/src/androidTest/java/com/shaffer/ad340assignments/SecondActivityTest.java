@@ -63,7 +63,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("10"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
@@ -71,7 +71,7 @@ public class SecondActivityTest {
         onView(withId(R.id.dailyMatchTime)).check(matches(withText(R.string.daily_match_reminder_time)));
         onView(withId(R.id.distanceFromUserTextView)).check(matches(withText(R.string.max_distance_away_in_miles)));
         onView(withId(R.id.ageRangeTextView)).check(matches(withText(R.string.age_range)));
-        onView(withId(R.id.maxDistanceEditText)).check(matches(withText("20")));
+        onView(withId(R.id.maxDistanceEditText)).check(matches(withText("10")));
         onView(withId(R.id.genderEditText)).check(matches(withText("female")));
         onView(withId(R.id.minAgeEditText)).check(matches(withText("30")));
         onView(withId(R.id.maxAgeEditText)).check(matches(withText("35")));
@@ -84,7 +84,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("10"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
@@ -93,7 +93,7 @@ public class SecondActivityTest {
         onView(withId(R.id.dailyMatchTime)).check(matches(withText(R.string.daily_match_reminder_time)));
         onView(withId(R.id.distanceFromUserTextView)).check(matches(withText(R.string.max_distance_away_in_miles)));
         onView(withId(R.id.ageRangeTextView)).check(matches(withText(R.string.age_range)));
-        onView(withId(R.id.maxDistanceEditText)).check(matches(withText("20")));
+        onView(withId(R.id.maxDistanceEditText)).check(matches(withText("10")));
         onView(withId(R.id.genderEditText)).check(matches(withText("female")));
         onView(withId(R.id.minAgeEditText)).check(matches(withText("30")));
         onView(withId(R.id.maxAgeEditText)).check(matches(withText("35")));
@@ -106,7 +106,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("Twenty"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("Ten"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
@@ -121,7 +121,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("10"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("Thirty"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
@@ -136,7 +136,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("10"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("16"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("35"), closeSoftKeyboard());
@@ -151,7 +151,7 @@ public class SecondActivityTest {
         onView(matcher).perform(click());
         SystemClock.sleep(800);
         TestUtils.setTime(R.id.timePicker, 12, 30);
-        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("20"), closeSoftKeyboard());
+        onView(withId(R.id.maxDistanceEditText)).perform(clearText(), typeText("10"), closeSoftKeyboard());
         onView(withId(R.id.genderEditText)).perform(clearText(), typeText("female"), closeSoftKeyboard());
         onView(withId(R.id.minAgeEditText)).perform(clearText(), typeText("30"), closeSoftKeyboard());
         onView(withId(R.id.maxAgeEditText)).perform(clearText(), typeText("Thirty-five"), closeSoftKeyboard());
