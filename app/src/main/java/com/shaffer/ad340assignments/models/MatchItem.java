@@ -15,21 +15,27 @@ public class MatchItem  implements Parcelable {
     public String imageUrl;
     public boolean liked;
     public String name;
+    public String longitude;
+    public String lat;
     
     public MatchItem() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    public MatchItem(String imageUrl, boolean liked, String name) {
+    public MatchItem(String imageUrl, boolean liked, String name, String longitude, String lat) {
         this.imageUrl = imageUrl;
         this.liked = liked;
         this.name = name;
+        this.longitude = longitude;
+        this.lat = lat;
     }
 
     public MatchItem(Parcel in) {
         imageUrl = in.readString();
         liked = in.readByte() != 0;
         name = in.readString();
+        longitude = in.readString();
+        lat = in.readString();
     }
 
     public static final Creator<MatchItem> CREATOR = new Creator<MatchItem>() {
@@ -51,6 +57,8 @@ public class MatchItem  implements Parcelable {
         result.put("imageUrl", imageUrl);
         result.put("liked", liked);
         result.put("name", name);
+        result.put("longitude", longitude);
+        result.put("lat", lat);
         return result;
     }
 
@@ -64,6 +72,8 @@ public class MatchItem  implements Parcelable {
         dest.writeString(imageUrl);
         dest.writeByte((byte) (liked ? 1 : 0));
         dest.writeString(name);
+        dest.writeString(longitude);
+        dest.writeString(lat);
     }
 
 }

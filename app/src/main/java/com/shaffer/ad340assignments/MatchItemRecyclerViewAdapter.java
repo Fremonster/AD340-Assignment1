@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ public class MatchItemRecyclerViewAdapter extends RecyclerView.Adapter<MatchItem
 
     private final List<MatchItem> mValues;
     private final MatchesContentFragment.OnListFragmentInteractionListener mListener;
+
     public MatchItemRecyclerViewAdapter(List<MatchItem> items, MatchesContentFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;

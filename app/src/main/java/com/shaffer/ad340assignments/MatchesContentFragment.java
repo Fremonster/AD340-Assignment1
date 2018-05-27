@@ -27,11 +27,15 @@ public class MatchesContentFragment extends Fragment {
     public static final String ARG_COLUMN_COUNT = "column-count";
     public static final String ARG_DATA_SET = "matches";
 
-    private int mColumnCount = 6;
-    private List<MatchItem> mDataSet;
+    int mColumnCount = 8;
+    List<MatchItem> mDataSet;
     private OnListFragmentInteractionListener mListener;
     private RecyclerView view;
     private Parcelable recylerViewState;
+    GetGPSLocation gps;
+    double latitude;
+    double longitude;
+    Context context;
 
     private static String TAG = MatchesContentFragment.class.getSimpleName();
 
@@ -54,6 +58,7 @@ public class MatchesContentFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        this.context = context;
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
@@ -70,6 +75,13 @@ public class MatchesContentFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             mDataSet = getArguments().getParcelableArrayList(ARG_DATA_SET);
         }
+        gps = new GetGPSLocation(context);
+        if(gps.canGetLocation()){
+            latitude = gps.getLatitude();
+            longitude = gps.getLongitude();
+        }else{
+            gps.showSettingsAlert();
+        }
         Log.i(TAG, "onCreate()");
     }
 
@@ -83,6 +95,14 @@ public class MatchesContentFragment extends Fragment {
         viewModel.getMatchItems(
                 (ArrayList<MatchItem> matches) -> {
                     MatchItemRecyclerViewAdapter adapter = new MatchItemRecyclerViewAdapter(matches, mListener);
+                    for (MatchItem item : matches) {
+                        double itemLongitude = Double.valueOf(item.longitude);
+                        double itemLatitude = Double.valueOf(item.lat);
+                        double milesAway = distanceFrom(itemLatitude, itemLongitude);
+                        if (milesAway > 16.0934) { //in km, equal to 10 miles
+                            matches.remove(item);
+                        }
+                    }
                     view.setAdapter(adapter);
                     view.setHasFixedSize(true);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
@@ -95,10 +115,22 @@ public class MatchesContentFragment extends Fragment {
         return view;
     }
 
+    private double distanceFrom(double latitude, double longitude) {
+        double R = 6371; // km - radius of the Earth
+        double dLat = Math.toRadians(this.latitude-latitude);
+        double dLon = Math.toRadians(this.longitude-longitude);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                Math.cos(Math.toRadians(latitude)) * Math.cos(Math.toRadians(this.latitude)) *
+                        Math.sin(dLon/2) * Math.sin(dLon/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        return R * c;
+    }
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+        gps.stopUsingGPS(); // removes updates
         Log.i(TAG, "onDetach()");
     }
 
