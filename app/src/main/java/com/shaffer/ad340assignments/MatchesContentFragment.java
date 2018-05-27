@@ -95,22 +95,16 @@ public class MatchesContentFragment extends Fragment {
         viewModel.getMatchItems(
                 (ArrayList<MatchItem> matches) -> {
                     MatchItemRecyclerViewAdapter adapter = new MatchItemRecyclerViewAdapter(matches, mListener);
-                    if (getActivity() == null) {
-                        return;
-                    } else {
-                        getActivity().runOnUiThread(new Runnable() {
-                            public void run() {
-                                for (MatchItem item : matches) {
-                                    double itemLongitude = Double.valueOf(item.longitude);
-                                    double itemLatitude = Double.valueOf(item.lat);
-                                    double milesAway = distanceFrom(itemLatitude, itemLongitude);
-                                    if (milesAway > 16.0934) { //in km, equal to 10 miles
-                                        matches.remove(item);
-                                    }
-                                }
-                            }
-                        });
+                    ArrayList<MatchItem> itemsToRemove = new ArrayList<>();
+                    for (MatchItem item : matches) {
+                        double itemLongitude = Double.valueOf(item.longitude);
+                        double itemLatitude = Double.valueOf(item.lat);
+                        double milesAway = distanceFrom(itemLatitude, itemLongitude);
+                        if (milesAway > 16.0934) { //in km, equal to 10 miles
+                            itemsToRemove.add(item);
+                        }
                     }
+                    matches.removeAll(itemsToRemove);
                     view.setAdapter(adapter);
                     view.setHasFixedSize(true);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
