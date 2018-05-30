@@ -46,9 +46,6 @@ public class SecondActivityTest {
         }
     };
 
-    @Rule
-    public GrantPermissionRule permissionRule = GrantPermissionRule.grant(android.Manifest.permission.ACCESS_FINE_LOCATION);
-
     @Test
     public void testProfileTab() {
         Matcher<View> matcher = allOf(withText("Profile"),
@@ -163,18 +160,18 @@ public class SecondActivityTest {
         onView(withId(R.id.maxAgeEditText)).check(matches(hasErrorText("Please enter a valid number")));
     }
 
-    @Test
-    public void testMatchesTab() {
-        Matcher<View> matcher = allOf(withText("Matches"),
-                isDescendantOfA(withId(R.id.tabs)));
-        onView(matcher).perform(click());
-        SystemClock.sleep(800);
-        onView(withId(R.id.my_recycler_view))
-                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        onView(withId(R.id.my_recycler_view)).perform(
-                RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.favorite_button)));
-        onView(withText("You liked Cool Guy Mike")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void testMatchesTab() {
+//        Matcher<View> matcher = allOf(withText("Matches"),
+//                isDescendantOfA(withId(R.id.tabs)));
+//        onView(matcher).perform(click());
+//        SystemClock.sleep(800);
+//        onView(withId(R.id.my_recycler_view))
+//                .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
+//        onView(withId(R.id.my_recycler_view)).perform(
+//                RecyclerViewActions.actionOnItemAtPosition(0, MyViewAction.clickChildViewWithId(R.id.favorite_button)));
+//        onView(withText("You liked Cool Guy Mike")).inRoot(withDecorView(not(is(activityTestRule.getActivity().getWindow().getDecorView())))).check(matches(isDisplayed()));
+//    }
 
     private static class MyViewAction {
 
