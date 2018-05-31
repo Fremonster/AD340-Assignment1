@@ -138,8 +138,14 @@ public class MatchesContentFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
-        gps.stopUsingGPS(); // removes updates
         Log.i(TAG, "onDetach()");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        gps.stopUsingGPS(); // removes updates
+        Log.i(TAG, "onDestroy()");
     }
 
     private static class GetSettingsTask extends AsyncTask<Void, Void, Settings> {
@@ -235,12 +241,6 @@ public class MatchesContentFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         Log.i(TAG,"onDestroyView()");
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy()");
     }
 
 }

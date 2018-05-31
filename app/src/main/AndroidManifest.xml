@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SecondActivity"/>
+        <service android:name=".GetGPSLocation"/>
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

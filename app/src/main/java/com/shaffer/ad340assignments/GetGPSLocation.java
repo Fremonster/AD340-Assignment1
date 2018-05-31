@@ -31,7 +31,12 @@ public class GetGPSLocation extends Service implements LocationListener {
     // The minimum distance to change Updates in meters
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 10; // 10 meters
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 1; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
+
+    // default constructor required to declare service in android manifest
+    public GetGPSLocation() {
+        mContext = getApplicationContext();
+    }
 
     public GetGPSLocation(Context context) {
         this.mContext = context;
@@ -95,7 +100,6 @@ public class GetGPSLocation extends Service implements LocationListener {
                 se.printStackTrace();
             }
         }
-
         return location;
     }
 
