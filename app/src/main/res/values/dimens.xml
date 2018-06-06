@@ -2,7 +2,7 @@
 <resources>
     <dimen name="hello_dimens">10dp</dimen>
     <dimen name="img_dimens">20dp</dimen>
-    <dimen name="dob_button_dimens">5dp</dimen>
+    <dimen name="dob_button_dimens">10dp</dimen>
     <dimen name="date_dimens">25dp</dimen>
     <dimen name="profile_text_dimens">20sp</dimen>
     <dimen name="toolbar_dimens">50dp</dimen>

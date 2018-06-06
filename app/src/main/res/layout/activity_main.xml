@@ -9,7 +9,7 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/clayColor"
+        android:background="@color/backgroundColor"
         android:orientation="vertical"
         tools:context=".MainActivity">
 
@@ -72,6 +72,7 @@
             android:layout_height="@dimen/date_dimens"
             android:layout_marginStart="@dimen/dob_button_dimens"
             android:onClick="setDate"
+            android:textColor="@color/colorAccent"
             android:text="@string/select_date" />
 
         <EditText
@@ -93,6 +94,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="setAge"
+            android:textColor="@color/colorAccent"
             android:text="@string/confirm_over_18" />
 
         <Button

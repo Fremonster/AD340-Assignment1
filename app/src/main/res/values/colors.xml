@@ -2,10 +2,11 @@
 <resources>
     <color name="colorPrimary">#5ba4f3</color>
     <color name="colorPrimaryDark">#186ccc</color>
-    <color name="colorAccent">#ca6c25</color>
-    <color name="clayColor">#FFCAA0</color>
+    <color name="colorAccent">#204983</color>
+    <color name="backgroundColor">#dedada</color>
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="grey">#666</color>
     <color name="pink">#FFC0CB</color>
+    <color name="medium_grey">#8e8c8c</color>
 </resources>

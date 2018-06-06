@@ -10,7 +10,7 @@
         android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/clayColor"
+        android:background="@color/backgroundColor"
         android:orientation="vertical"
         tools:context=".SecondActivity">
 
@@ -25,7 +25,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/toolbar_dimens"
-                android:background="@color/clayColor"
+                android:background="@color/backgroundColor"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 

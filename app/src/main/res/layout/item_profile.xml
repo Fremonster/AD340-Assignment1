@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_marginStart="@dimen/hello_dimens"
-            android:textColor="#8e8c8c"
+            android:textColor="@color/colorAccent"
             android:textSize="@dimen/profile_text_dimens"
             android:textStyle="bold" />
 
@@ -32,6 +32,7 @@
 
         <Button
             android:id="@+id/return_btn"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/profilePic"
